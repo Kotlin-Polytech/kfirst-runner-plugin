@@ -17,6 +17,8 @@ class KFirstRunnerMojo : AbstractMojo() {
     @Parameter
     private var resultFile: String = "results.json"
     @Parameter
+    private var timeout: Long = 50L
+    @Parameter
     private var sendToGoogle: Boolean = false
 
     @Parameter(defaultValue = "\${project}", readonly = true)
@@ -32,6 +34,7 @@ class KFirstRunnerMojo : AbstractMojo() {
                 authorFile = authorFile,
                 ownerFile = ownerFile,
                 resultFile = resultFile,
+                timeout = timeout,
                 sendToGoogle = sendToGoogle
         )
 
