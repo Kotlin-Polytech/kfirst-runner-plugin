@@ -5,7 +5,7 @@
 
     <groupId>org.jetbrains.research</groupId>
     <artifactId>kfirst-runner-plugin</artifactId>
-    <version>0.1.9</version>
+    <version>0.1.10</version>
     <packaging>maven-plugin</packaging>
 
     <name>Maven Plugin for kfirst-runner</name>
@@ -67,7 +67,7 @@
         <dependency>
             <groupId>org.jetbrains.research</groupId>
             <artifactId>kfirst-runner</artifactId>
-            <version>0.1.8</version>
+            <version>0.1.10</version>
         </dependency>
 
     </dependencies>
