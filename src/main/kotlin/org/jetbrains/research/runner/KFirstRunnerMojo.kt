@@ -18,8 +18,6 @@ class KFirstRunnerMojo : AbstractMojo() {
     private var resultFile: String = "results.json"
     @Parameter
     private var timeout: Long = 50L
-    @Parameter
-    private var sendToGoogle: Boolean = false
 
     @Parameter(defaultValue = "\${project}", readonly = true)
     private lateinit var project: MavenProject
@@ -34,8 +32,7 @@ class KFirstRunnerMojo : AbstractMojo() {
                 authorFile = authorFile,
                 ownerFile = ownerFile,
                 resultFile = resultFile,
-                timeout = timeout,
-                sendToGoogle = sendToGoogle
+                timeout = timeout
         )
 
         runner.run(args)
