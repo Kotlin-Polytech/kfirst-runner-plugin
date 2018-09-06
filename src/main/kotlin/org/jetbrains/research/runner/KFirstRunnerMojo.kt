@@ -1,9 +1,13 @@
 package org.jetbrains.research.runner
 
 import org.apache.maven.plugin.AbstractMojo
+import org.apache.maven.plugins.annotations.Component
 import org.apache.maven.plugins.annotations.Mojo
 import org.apache.maven.plugins.annotations.Parameter
 import org.apache.maven.project.MavenProject
+import org.eclipse.aether.RepositorySystem
+import org.eclipse.aether.RepositorySystemSession
+import org.eclipse.aether.repository.RemoteRepository
 import org.jetbrains.research.runner.util.getClasspathFromModel
 import java.io.File
 
@@ -24,11 +28,20 @@ class KFirstRunnerMojo : AbstractMojo() {
     @Parameter(defaultValue = "\${project}", readonly = true)
     private lateinit var project: MavenProject
 
+    @Component
+    private lateinit var repoSystem: RepositorySystem
+
+    @Parameter(defaultValue = "\${repositorySystemSession}", readonly = true)
+    private lateinit var repoSession: RepositorySystemSession
+
+    @Parameter(defaultValue = "\${project.remoteProjectRepositories}", readonly = true)
+    private lateinit var remoteRepos: List<RemoteRepository>
+
     override fun execute() {
         val runner = org.jetbrains.research.runner.KFirstRunner()
 
         val classpathFiles = project.testClasspathElements.map { File(it) } +
-                getClasspathFromModel(project.model).map { it.artifact.file }
+                getClasspathFromModel(project.model, repoSystem, repoSession, remoteRepos).map { it.artifact.file }
 
         val args = RunnerArgs(
                 projectDir = "",
