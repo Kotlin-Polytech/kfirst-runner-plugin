@@ -46,10 +46,7 @@ class KFirstRunnerMojo : AbstractMojo() {
         val args = RunnerArgs(
                 projectDir = "",
                 classpathPrefix = classpathFiles.map {
-                    when {
-                        it.isFile -> "file:$it"
-                        else -> "file:$it/"
-                    }
+                    it.toURI().toString()
                 },
                 packages = packages,
                 authorFile = authorFile,
