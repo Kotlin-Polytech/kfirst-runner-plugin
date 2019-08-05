@@ -5,26 +5,31 @@
 
     <groupId>org.jetbrains.research</groupId>
     <artifactId>kfirst-runner-plugin</artifactId>
-    <version>0.1.18.2</version>
+    <version>19.0.1</version>
     <packaging>maven-plugin</packaging>
 
-    <name>Maven Plugin for kfirst-runner</name>
+    <name>kfirst-runner-plugin</name>
 
-    <url>https://research.jetbrains.org/groups/pvalab</url>
+    <parent>
+        <groupId>ru.spbstu</groupId>
+        <artifactId>kfirst-bom</artifactId>
+        <version>19.0.1</version>
+    </parent>
+
+    <distributionManagement>
+        <repository>
+            <id>bintray-vorpal-research-kotlin-maven</id>
+            <name>vorpal-research-kotlin-maven</name>
+            <url>
+                https://api.bintray.com/maven/vorpal-research/kotlin-maven/${project.artifactId}/;publish=1
+            </url>
+        </repository>
+    </distributionManagement>
 
     <properties>
-        <project.build.sourceEncoding>
-            UTF-8
-        </project.build.sourceEncoding>
-        <project.reporting.outputEncoding>
-            UTF-8
-        </project.reporting.outputEncoding>
-
-        <kotlin.version>1.2.51</kotlin.version>
-        <maven.core.version>3.3.3</maven.core.version>
-        <maven.plugin-tools.version>3.4</maven.plugin-tools.version>
-        <plexus.version>3.0.24</plexus.version>
-        <junit.version>4.12</junit.version>
+        <maven.core.version>3.6.1</maven.core.version>
+        <maven.plugin-tools.version>3.6.0</maven.plugin-tools.version>
+        <plexus.version>3.2.1</plexus.version>
     </properties>
 
     <dependencies>
@@ -51,38 +56,23 @@
         </dependency>
 
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-stdlib-jdk8</artifactId>
-            <version>${kotlin.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.kotlin</groupId>
-            <artifactId>kotlin-test-junit</artifactId>
-            <version>${kotlin.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
             <groupId>org.jetbrains.research</groupId>
             <artifactId>kfirst-runner</artifactId>
-            <version>0.1.18.2</version>
+            <version>19.0.1</version>
         </dependency>
 
     </dependencies>
 
     <build>
+        <sourceDirectory>
+            src/main/kotlin
+        </sourceDirectory>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>3.5</version>
+                <version>3.6.0</version>
                 <configuration>
                     <goalPrefix>kfirst-runner</goalPrefix>
                     <skipErrorNoDescriptorsFound>
@@ -104,76 +94,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.jetbrains.kotlin</groupId>
-                <artifactId>kotlin-maven-plugin</artifactId>
-                <version>${kotlin.version}</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                        <configuration>
-                            <sourceDirs>
-                                <source>src/main/java</source>
-                                <source>src/main/kotlin</source>
-                            </sourceDirs>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>test-compile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>test-compile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <jvmTarget>1.8</jvmTarget>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.5.1</version>
-                <executions>
-                    <execution>
-                        <id>compile</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>compile</goal>
-                        </goals>
-                    </execution>
-                    <execution>
-                        <id>testCompile</id>
-                        <phase>test-compile</phase>
-                        <goals>
-                            <goal>testCompile</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>bintray-vorpal-research-kotlin-maven</id>
-            <name>vorpal-research-kotlin-maven</name>
-            <url>http://dl.bintray.com/vorpal-research/kotlin-maven</url>
-        </repository>
-    </repositories>
-
-    <distributionManagement>
-        <repository>
-            <id>bintray-vorpal-research-kotlin-maven</id>
-            <name>vorpal-research-kotlin-maven</name>
-            <url>
-                https://api.bintray.com/maven/vorpal-research/kotlin-maven/${project.artifactId}/;publish=1
-            </url>
-        </repository>
-    </distributionManagement>
 
 </project>
