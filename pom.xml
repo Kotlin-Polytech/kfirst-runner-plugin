@@ -5,7 +5,7 @@
 
     <groupId>org.jetbrains.research</groupId>
     <artifactId>kfirst-runner-plugin</artifactId>
-    <version>20.0.0</version>
+    <version>21.0.0</version>
     <packaging>maven-plugin</packaging>
 
     <name>kfirst-runner-plugin</name>
@@ -13,7 +13,7 @@
     <parent>
         <groupId>ru.spbstu</groupId>
         <artifactId>kfirst-bom</artifactId>
-        <version>20.0.0</version>
+        <version>21.0.0</version>
     </parent>
 
     <distributionManagement>
@@ -69,7 +69,7 @@
         <dependency>
             <groupId>org.jetbrains.research</groupId>
             <artifactId>kfirst-runner</artifactId>
-            <version>20.0.0</version>
+            <version>21.0.0</version>
         </dependency>
 
     </dependencies>
