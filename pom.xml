@@ -38,7 +38,7 @@
     </repositories>
 
     <properties>
-        <maven.core.version>3.6.1</maven.core.version>
+        <maven.core.version>3.8.1</maven.core.version>
         <maven.plugin-tools.version>3.6.0</maven.plugin-tools.version>
         <plexus.version>3.2.1</plexus.version>
     </properties>
